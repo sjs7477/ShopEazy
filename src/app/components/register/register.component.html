@@ -1,3 +1,14 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">
+    <app-header></app-header>
+  </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+  </nav>
+  <a class="btn btn-primary" [routerLink]="['/register']">Sign up</a>
+  <a class="btn btn-outline-secondary" [routerLink]="['/login']">Login</a>
+</div>
+
+
 <div class="row">
   <div class="col-md-4 offset-md-4">
     <div class="guest-form-card card">
@@ -8,31 +19,6 @@
 
       <div class="card-body">
         <form [formGroup]="registerForm" (ngSubmit)="register()">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              id="name"
-              class="form-control"
-              [ngClass]="{ 'is-invalid': registerForm.get('name').touched && registerForm.get('name').invalid }"
-              formControlName="name"
-            />
-            <span class="invalid-feedback">Name can't be blank.</span>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              class="form-control"
-              [ngClass]="{ 'is-invalid': registerForm.get('email').touched && registerForm.get('email').invalid }"
-              formControlName="email"
-            />
-            <span class="invalid-feedback">
-              <span *ngIf="registerForm.get('email').hasError('required')">Email can't be blank.</span>
-              <span *ngIf="registerForm.get('email').hasError('email')">Email must be valid.</span>
-            </span>
-          </div>
 
           <div class="form-group">
             <label for="username">Username</label>
@@ -75,6 +61,15 @@
 
           <button class="btn btn-primary btn-block" [disabled]="registerForm.invalid">Register</button>
         </form>
+        <div *ngIf="showSuccessMessage">
+          <h5 style="color:green">User registered successfully!!</h5>
+        </div>
+        <div *ngIf="showRegisteredMessage">
+          <h5 style="color:red">Username already exists, please use another username</h5>
+        </div>
+        <div *ngIf="showErrorMessage">
+          <h5 style="color:red">Error registering user, please try again later!!</h5>
+        </div>
       </div>
     </div>
   </div>

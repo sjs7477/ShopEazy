@@ -10,10 +10,10 @@ import { Product } from 'src/app/models/product';
   providedIn: 'root'
 })
 export class ProductService {
-
+  productUrl = "http://localhost:8080/productList";
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(productsUrl);
+    return this.http.get<Product[]>(this.productUrl);
   }
 }
