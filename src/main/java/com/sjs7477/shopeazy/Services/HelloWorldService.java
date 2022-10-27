@@ -9,7 +9,7 @@ public class HelloWorldService {
         System.out.println("Entering the Service");
         // to be changed to be gotten from DAO
         HelloWorldDAO helloWorldDAO = new HelloWorldDAO();
-       message= helloWorldDAO.HelloWorld();
+       helloWorldDAO.getPasswordItemByName(message);
         System.out.println("Leaving the Service");
         return message;
     }
